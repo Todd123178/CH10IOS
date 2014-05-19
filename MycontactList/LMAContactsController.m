@@ -34,20 +34,21 @@
 
 - (IBAction)changeEditMode:(id)sender {
     NSArray *textFields = @[_txtName, _txtAddress, _txtCity, _txtState, _txtZip, _txtPhone, _txtCell, _txtEmail,_txtLast];
-    if(_sgmtEditMode.selected==0){
+    if(_sgmtEditMode.on){
         for(UITextField*txtfield in textFields){
+            [txtfield setEnabled:YES];
+            [txtfield setBorderStyle:UITextBorderStyleRoundedRect];
+            
+        }
+        [_btnChange setHidden:NO];
+    }
+    else
+    {
+        for(UITextField *txtfield in textFields){
             [txtfield setEnabled:NO];
             [txtfield setBorderStyle:UITextBorderStyleNone];
         }
         [_btnChange setHidden:YES];
-    }
-    else if (_sgmtEditMode.selected==1)
-    {
-        for(UITextField *txtfield in textFields){
-            [txtfield setEnabled:YES];
-            [txtfield setBorderStyle:UITextBorderStyleRoundedRect];
-        }
-        [_btnChange setHidden:NO];
     }
 }
 @end
